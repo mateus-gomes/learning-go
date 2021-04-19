@@ -1,0 +1,6 @@
+- Rodar todos os testes na pasta raiz, utilize: go test ./...
+- Mostrar quais as funções sendo testadas: go test -v
+- Verificar quão coberto está o teste: go test --cover
+- Verificar e cria um txt do que está coberto e o que não está: go test --coverprofile (nome-do-arquivo.txt)
+- Traduz o arquivo de cobertura: go tool cover --func=(nome-do-arquivo.txt)
+- Cria um html com as linhas que não está sendo cobertas: go tool cover --html=(nome-do-arquivo.txt)
