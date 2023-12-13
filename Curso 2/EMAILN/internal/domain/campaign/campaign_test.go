@@ -13,7 +13,7 @@ func TestNewcampaign(t *testing.T) {
 	content := "Body"
 	contacts := []string{"email@gmail.com", "email2@gmail.com"}
 
-	campaign := NewCampaign(name, content, contacts)
+	campaign, _ := NewCampaign(name, content, contacts)
 
 	assert.Equal(campaign.Name, name)
 	assert.Equal(campaign.Content, content)
