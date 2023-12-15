@@ -2,23 +2,23 @@ package campaign
 
 import (
 	"emailn/internal/contract"
+	internalerrors "emailn/internal/internal-errors"
 )
 
 type Service struct {
 	Repository Repository
 }
 
-func (s *Service) Create(campaignDTO contract.CampaignDTO) (string, error) {
-	campaign, err := NewCampaign(campaignDTO.Name, campaignDTO.Content, campaignDTO.Emails)
+func (s *Service) Create(newCampaign contract.CampaignDTO) (string, error) {
+
+	campaign, err := NewCampaign(newCampaign.Name, newCampaign.Content, newCampaign.Emails)
 	if err != nil {
 		return "", err
 	}
-
 	err = s.Repository.Save(campaign)
-
 	if err != nil {
-		return "", err
+		return "", internalerrors.ErrInternal
 	}
 
-	return campaign.Id, nil
+	return campaign.ID, nil
 }
